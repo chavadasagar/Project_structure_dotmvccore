@@ -1,0 +1,45 @@
+﻿create database test
+go
+USE [test]
+GO
+/****** Object:  Table [dbo].[User]    Script Date: 21-03-2023 11.35.38 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[User](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Email] [nvarchar](max) NULL,
+	[Password] [nvarchar](max) NULL,
+	[Firstname] [nvarchar](max) NULL,
+	[Lastname] [nvarchar](max) NULL,
+	[Mobile] [nvarchar](max) NULL,
+	[Image] [nvarchar](max) NULL,
+	[RoleidFk] [int] NULL,
+	[Createdby] [int] NULL,
+	[Updatedby] [int] NULL,
+	[CreatedDate] [datetime] NULL,
+	[Updateddate] [datetime] NULL,
+	[isDeleted] [bit] NULL,
+ CONSTRAINT [PK_User] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[User] ON 
+
+INSERT [dbo].[User] ([id], [Email], [Password], [Firstname], [Lastname], [Mobile], [Image], [RoleidFk], [Createdby], [Updatedby], [CreatedDate], [Updateddate], [isDeleted]) VALUES (1, N'sagar@gmail.com', N'1212', N'sagar', N'chavda', N'128718278', N'default.png', 2, 1, NULL, NULL, NULL, NULL)
+SET IDENTITY_INSERT [dbo].[User] OFF
+GO
+/****** Object:  StoredProcedure [dbo].[SP_GetAllUser]    Script Date: 21-03-2023 11.35.38 AM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+create   procedure [dbo].[SP_GetAllUser]
+as
+begin
+select * from [User]
+end
+GO
